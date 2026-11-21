@@ -65,6 +65,8 @@ Số "job" = Items trên bảng Objects của job trừ 4 tag (A01 12, A02 12, B
    </polyline>
    ```
 
+Nguồn ảnh trong ảnh chụp 2 và 3 (chỉ dùng cho mục đích học tập, phi thương mại): ảnh A12 thuộc BDD100K — Dữ liệu BDD100K © 2018 The Regents of the University of California, theo BDD100K License. Ảnh B07 thuộc WoodScape — © Valeo, CC BY-NC-SA 4.0 (Yogamani, S. et al., *WoodScape: A multi-task, multi-camera fisheye dataset for autonomous driving*, ICCV 2019).
+
 ## 7. Tự đánh giá
 Lỗi bạn mắc nhiều nhất hôm nay (theo mã QC1-xx), và cách tránh ở Ngày 20: QC1-09 (`group` của biển báo): tôi hay không xác định được biển thuộc nhóm nào, nhất là biển Mỹ nền trắng (có thể là `prohibitory` hoặc `mandatory`) và nhiều biển còn để nguyên giá trị mặc định `prohibitory`. Ở Ngày 20 tôi sẽ đọc chữ / ký hiệu trên biển rồi tra bảng nhóm biển ở guideline mục 3 (phân theo chức năng, không theo màu hay hình dạng); với mỗi box mở Details để chọn `group` thay vì để mặc định; biển nào không chắc thì chọn nhóm gần nhất theo chức năng và ghi ngay vào bảng ca khó.  
 Nhãn của bạn đi vào model ở đâu? Chọn một lỗi đã sửa và nói nó làm model học sai thế nào: nhãn `lane` (polyline và thuộc tính) là đích huấn luyện cho model phát hiện làn kiểu row-anchor và cho phần phân loại thuộc tính vạch, đầu ra của nó được LKA / hệ thống giữ làn dùng. Lỗi đã sửa: ở A04, vạch R1 là vạch đứt nhưng tôi gán `style = solid`. Nếu để nguyên, model học rằng kiểu vạch này là vạch liền, tức là "không được chuyển làn"; xe sẽ hiểu sai luật ở chỗ được phép chuyển làn, và tập dữ liệu bị lệch về phía vạch liền khi thống kê theo `style`.  
