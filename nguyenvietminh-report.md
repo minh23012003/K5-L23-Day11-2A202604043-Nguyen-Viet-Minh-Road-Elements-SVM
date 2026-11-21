@@ -47,23 +47,34 @@ Bạn kiểm lô của tôi: phamquanghuy  Quyết định nhận được: Rewo
 Số "job" = Items trên bảng Objects của job trừ 4 tag (A01 12, A02 12, B01 7, B02 9); số "file" đếm từ `annotations.xml` sau khi mở lại; cả bốn ảnh khớp. Cả hai zip chỉ chứa `annotations.xml`, không kèm ảnh (`contains_images = false` trong manifest).
 
 ## 6. Ảnh chụp màn hình
-1. Tab Labels của project.  
-   ![Tab Labels của project](screenshots/1-labels.png)
-2. Một ảnh camera trước đã gán đủ (làn, vùng lái, đèn/biển): A12.  
-   ![A12 đã gán đủ](screenshots/2-front-A12.png)
-3. Một ảnh fisheye đã gán, phóng to đoạn polyline cong: B07.  
-   ![B07 polyline cong](screenshots/3-fisheye-B07.png)
-4. Một đoạn XML có `<polyline label="lane">`: lane R1 của A01 trong `nguyenvietminh-front.zip`.  
-   ![Đoạn XML polyline lane](screenshots/4-xml-polyline.png)
+### 6.1. Tab Labels của project
+Project có sáu label vẽ (lane, road_curb, crosswalk, drivable, traffic_light, traffic_sign) và bốn label tag (camera, timeofday, weather, source), đúng guideline Road v1.0.
 
-   ```xml
-   <polyline label="lane" source="manual" occluded="0" points="617.10,652.40;521.35,585.23;480.90,557.61;462.94,544.83;450.60,535.72" z_order="0">
-     <attribute name="position">R1</attribute>
-     <attribute name="style">dashed</attribute>
-     <attribute name="color">white</attribute>
-     <attribute name="kind">single</attribute>
-   </polyline>
-   ```
+![Tab Labels của project](screenshots/1-labels.png)
+
+### 6.2. Ảnh camera trước đã gán đủ: A12
+Ảnh A12 có lane (L1, R1, L2), vùng drivable (direct và alternative), crosswalk, hộp traffic_light và traffic_sign cùng bốn tag. Job có 16 mục gồm 12 hình vẽ và 4 tag.
+
+![A12 trên CVAT](screenshots/2-front-A12.png)
+
+### 6.3. Ảnh fisheye đã gán, phóng to polyline cong: B07
+Ảnh B07 (fisheye_right) có ba lane `position = other` đặt điểm theo cung, cùng crosswalk, drivable và road_curb. Job có 10 mục gồm 6 hình vẽ và 4 tag.
+
+![B07 polyline theo cung](screenshots/3-fisheye-B07.png)
+
+### 6.4. Đoạn XML có `<polyline label="lane">`
+Lane R1 của ảnh A01 trong `nguyenvietminh-front.zip` (`annotations.xml`, CVAT for images 1.1): điểm đầu (617, 652) ở gần xe, các thuộc tính position, style, color, kind nằm trong từng hình.
+
+![Đoạn XML polyline lane](screenshots/4-xml-polyline.png)
+
+```xml
+<polyline label="lane" source="manual" occluded="0" points="617.10,652.40;521.35,585.23;480.90,557.61;462.94,544.83;450.60,535.72" z_order="0">
+  <attribute name="position">R1</attribute>
+  <attribute name="style">dashed</attribute>
+  <attribute name="color">white</attribute>
+  <attribute name="kind">single</attribute>
+</polyline>
+```
 
 Nguồn ảnh trong ảnh chụp 2 và 3 (chỉ dùng cho mục đích học tập, phi thương mại): ảnh A12 thuộc BDD100K — Dữ liệu BDD100K © 2018 The Regents of the University of California, theo BDD100K License. Ảnh B07 thuộc WoodScape — © Valeo, CC BY-NC-SA 4.0 (Yogamani, S. et al., *WoodScape: A multi-task, multi-camera fisheye dataset for autonomous driving*, ICCV 2019).
 
